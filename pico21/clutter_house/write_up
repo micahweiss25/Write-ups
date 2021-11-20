@@ -1,0 +1,15 @@
+-Open the source code, chall.c
+-look for hints of flag
+-line 47 has system("cat flag.txt")
+-we can assume this function tells the 
+system to execute cat with flag.txt arg
+-for this line to run, code must equal GOAL
+-GOAL is hex 0xdeadbeef
+-intuition tells me this is a bufferoverflow, so open gdb debugger
+-find address of GOAL variable
+-0xdeadbeef is loaded into eax after the gets command, so maybe I should overflow the buffer to fill RIP  with 0x40078c, the address after the condition is passed
+- I used cyclic(300) to find overflow the buffer
+- cmp rbp-8 and RAX where RAX is 0xdeadbeef and rbp-8 is 0x63616171
+- use cyclic_find(0x63616171) to find offet, 264
+- confirmed by sending 'a'*264 + 'b'*4 and checking register with pwndbg> x 0x7FFFFFFFDF38 (rbp value - 8) which returned 0x62626262
+- content of rax with pwndbg> i r rax which returned 0xdeadbeef
