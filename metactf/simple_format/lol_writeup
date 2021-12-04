@@ -1,0 +1,36 @@
+we are given a compiled file that takes an input and returns a string containing our input. Off the bat, I'm thinking some kind of overflow. When I give it a ton of a's, I don't get a seg fault, but it ends in a weird character.
+
+I'll open it in ghidra and look for where it might be vuln.
+
+**In main, "./flag.txt" is opened and stored in iVar.
+
+then, it does a strncmp btw local_78 and loca_e8, which compares the first n
+bytes of each str and then stores it as iVar. 
+
+These commands have me confused because iVar seems to be used a couple different times so I followed local_78 to find out what is stored there.
+
+if iVar != 0, it prints "your guessed wrong with " and then printf(local_78), 
+so I know local_78 is our input.
+
+on line 17, it says read(iVarl, local_e8,100)
+after reading the man pages for read, I know 100 bytes of iVarl is read into 
+local_e8. So, local_e8 is the first 100 bytes of the flag now. 
+
+line 18: read(0,local_78,100)
+this makes no sense to me... read 100 bytes from null into local_78. maybe I canoverflow to change the parameter and read
+
+run checksec and get [*] '/home/wei/CTF/metactf/simple_format/fundamentals'
+    Arch:     amd64-64-little
+    RELRO:    Full RELRO
+    Stack:    Canary found
+    NX:       NX enabled
+    PIE:      PIE enabled
+
+NX is enabled, so you can't run shellcode, PIE is enabled so executing attack based on where things are in the virtual address won't work. 
+
+**IGNORE ALL ABOVE**
+
+puts("") is returning some weird characters anytime you input more than 86 bytes. Why?
+
+**ALL OF THIS WAS USELESS**
+This writeup now serves as a documentation of my ineptness. It was a string format error.

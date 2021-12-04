@@ -1,0 +1,29 @@
+for this challenge, we were given a complied executable. when you run it, 
+it asks you for a password. It takes your input and puts it at the end
+of a string that tells you you are wrong, or just says you are right.
+when you open it up in ghidra, you can see that it doesn't sanatize your
+input, so you can use a formating vulnerability ie %s, %x. 
+
+First, you need to find the offset of the flag on the stack so you know
+what part of the stack you want to pop off the stack with your IDed 
+vulnerability. you can do this by creating a flag.txt file on your 
+local device and placing a break point at the printf() you are
+using to leak the flag. When doing this in GDB, I found
+the hex form of the sting I placed in flag.txt was in the 8th
+byte from the top of the stack
+
+Taking this info, we can format a playload. using %{position from 
+top of stack}%{format} we can get our flag. Since it's in the
+8th byte and we want it as a string, we send: %8$s. Due to 
+some stuff about width that I don't totally understand, you actually
+need to add double long (ll) to the front of the format -> %8$lls.
+
+after doing this, I found out that the string was very long 
+and that the hex was little endian. So, I incremented our
+payload, %8$s by one and put the output into a hex decoder
+until I couln't recognize the results anymore. Then I reversed
+the ascii we got from converting the hex because of the little
+endian effect. After some cleaning up for brackets, which didn't
+convert well, we were left with 
+MetaCTF{L34kIn9_7h3_574CK_I5_oNLY_7H3_839innin9_wh47_3L53_C4n_yOU_do}
+
