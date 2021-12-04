@@ -1,0 +1,7 @@
+For this problem, we are given a file. once execute, it prompts for an input.
+A incorrect response with return "begone!!".
+
+The first thing I did, since the response didn't give any hints, was to open
+the file in ghidra. After navigating to the main funciton, one variable stuck out. In it was the string "MetaCTF{this_is_the_most_secure_ever}". A couple lines down was the compare line between the input and this variable. I threw it into the program to varify, and it gave a respones indicating that it was correct.
+
+Pretty easy!
