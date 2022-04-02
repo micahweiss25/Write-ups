@@ -1,2 +1,4 @@
-First, get the file
-![ScreenShot](https://github.com/micahweiss25/Write-ups/blob/main/pico22/forensics/st3go/st3go.png)
+First, get the file ![this works](img/st3go.png)
+
+
+![Screen Shot](./img/st3go.png)
