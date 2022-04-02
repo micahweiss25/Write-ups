@@ -1,0 +1,48 @@
+BUFFER_OVERFLOW_3
+
+VULN: 
+
+SEC: 
+	RELRO:    Partial RELRO
+    Stack:    No canary found
+    NX:       NX enabled
+    PIE:      No PIE (0x8048000)
+
+INVESTIGATION: There is a win function that calls the flag. Also, there is a weird read_canary function that reads the value of what most likely will be used as a canary into memory (&global_canary). Possibly useful later. vuln is run next. I loads the global canary. 
+
+the vuln in function vuln.
+read(0,length+x,1); # read one byte from stdin into buffer at length+x
+if(length[x]=='\n') break; # newline will break
+x++;
+
+
+step one, brute force the canary. 
+
+I think local_98 is the input
+
+I can select the number of bytes read from input @ read(0,buf,count) because count is our input and buf is a var 64 bytes of space directly above the canary. If I can find the canary, I can 
+
+global canary is at 0x804c054 but partial relro is on and I still wouldn't know how to get it without a string formating vuln
+
+
+
+x = 0
+while x < 64:
+	store one byte from stdin in length + x
+
+
+sscanf takes an string, converts it to a decimal integer, and saves it at a location
+
+
+
+vuln:
+"how many"
+input...
+x = 0
+while x < 64:
+	if stdin isn't \n,
+	store one byte from stdin in length + x
+convert length into decimal int and store in count
+"input>"
+input...
+read count bytes from stdin into buf

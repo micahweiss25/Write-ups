@@ -1,0 +1,1 @@
+I downloaded postgreSQL, ran \l to show all databases, \c pico to connect to pico database, \dt to list all the tables, and SELECT * FROM flags; to view the data in the flag table. Under Luke, in the address column, was the flag picoCTF{L3arN_S0m3_5qL_t0d4Y_73b0678f}

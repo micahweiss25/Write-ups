@@ -1,0 +1,17 @@
+BABY GAME
+
+VULN: fread(), bufferoverflow
+
+SEC VULN: None, must rop
+
+INVESTIGATION: I opened the file in ghidra and went to main. Not a lot going on, but I see a condition that leads to the execution of "game()" (note that for later). There are two other functions of interest, set_username() and print_username. After further investigating set_username, we realize that it is vulnerable. It reads an indefinate number of bytes into the NAME buffer, which allows RANDBUF, directly below it, to be overwritten. NAME is at 0x56106aab30a0 and RANDBUF is at 0x56106aab30c0, 32 bytes below/above whatever. If I do x/s on the addresses, NAME returns the string of the username that I gave it, but RANDBUF gives back what might be a pointer.
+
+where is the check againsts
+
+relo is on
+
+the ints are loaded by point to a pointer
+
+find difference between dev/urandom and bin/sh
+
+0x555555556024

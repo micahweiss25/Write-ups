@@ -1,0 +1,1 @@
+I opened the file in wireshark, followed the first stream, which said a file sent to 9002 was encrypt and what program to use to decode it. I found a tcp stream to 9002 that was followed by "got it", downloaded it as raw bits, and ran the program suggested in the earlier tcp stream converstation.

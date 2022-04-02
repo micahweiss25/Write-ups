@@ -1,0 +1,6 @@
+Big surpise, it's a substituion cipher.
+
+I opened up this website for a frequency attack.
+https://www.101computing.net/frequency-analysis/
+
+start by subing for the what clearly is picoCTF{ -> mkwrWYH{. After that, just keep solving based on what letters would make sense. 

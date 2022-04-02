@@ -1,0 +1,5 @@
+RPS_WRITEUP.txt
+
+200pts
+there are two important arrays: hands[3] and loses[3]. to see if you won, the program sees if loses[random_int] is in your input by using strstr(). if your input is all three loses (rockpaperscissors), it will always win
+picoCTF{50M3_3X7R3M3_1UCK_B69E01B8}
