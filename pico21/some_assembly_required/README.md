@@ -86,7 +86,8 @@ function onButtonPress() {
   exports.copy_char(0, lanyia.length), exports[videlle(487)]() == 1 ? document[videlle(494)](videlle(476))[videlle(481)] = videlle(486) : document[videlle(494)](videlle(476))[videlle(481)] = videlle(488);
 }
 ```
-still not really able to make anything out but I see a clear compare - if (eino == daedalus) break; - so I wanted to see if I could step through the code in the browser using the firefox web tools debugger in order to find what is stored in these variables. While stepping through, right around when there is a while loop forming the string for a variable, it took me to file I hadn't seen before. I control-F'ed it for picoCTF and found the flag.
+still not really able to make anything out but I see a clear compare - if (eino == daedalus) break; - so I wanted to see if I could step through the code in the browser using the firefox web tools debugger in order to find what is stored in these variables. 
+![](some_assembly_required.png) While stepping through, right around when there is a while loop forming the string for a variable, it took me to file I hadn't seen before. I control-F'ed it for picoCTF and found the flag.
 
 ## Right Path
 Although I didn't come at this challenge from the correct angle, I learned what I should have done after further inspection. As the title suggests, this is a web assembly challenge. 
