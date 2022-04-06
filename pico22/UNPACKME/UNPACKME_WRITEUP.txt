@@ -1,0 +1,8 @@
+it is compressed with ultimate packer executable. you need to run 
+$ upx -d unpackme-upx
+then open it in ghidra.
+In main, you'll see that the favorite number is 754635. Enter that and get the flag.
+
+
+picoCTF{up><_m3_f7w_e510a27f}
+

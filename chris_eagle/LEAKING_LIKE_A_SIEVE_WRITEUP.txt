@@ -1,1 +1,9 @@
-LEAKING_LIKE_A_SIEVE.txt
+CUP_OVERFLOW_WRITEUP
+
+VULN: STRING FORMATING
+
+SEC: CANARY
+
+INVESTIGATE: First, open the elf in ghidra for easy viewability of what's going on. Starting in main, we see multiple local variables on the stack. After space on the stack is allocated for the local variables, a canary is set. After buffer_inti() 32 bytes from __stream are read into local_38. Then, buffer_init uses setbuf to default stdin, stdout, and stderr's mode to be determined by what reads or writes to it next. If this is stdin, it is line buffered. ** I believe these means that stdin and out will be line buffered and stderr is unbuffered as it usually is** ** or maybe they will all be set to line buffered because the next read is from flag.txt which is standard out? ** There is a check to see if __stream is empty, which mean you have to pass a file when executing the elf remotely to see its functionality. I'm not sure why it doesn't just notice the preset __stream... Then, the flag, stored in __stream, is read to local_38. Then, it asks for your name and reads your input from stdin to local_58 and puts 10 bytes of chars. 
+
+I'm thinking I can probably get it with a string format vuln. pass it 4 %p's, each printing 8 bytes of what it thinks are points, to get past local_58, and 6 %x to get hex values which are ascci for the flag. 

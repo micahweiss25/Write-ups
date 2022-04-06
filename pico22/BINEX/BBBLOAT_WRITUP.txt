@@ -1,0 +1,4 @@
+BBBLOAT_WRITUP.txt
+
+I opened it in ghidra, found the function that looked most like it was doing something, saw there was a condition, decoded what the condition was (if (local_48==0x86187) -> if input == 549255) and that what followed was some kind of decoding of what was most likely the flag. ran it, gave it 549255, and got the flag.
+picoCTF{cu7_7h3_bl047_695036e3}

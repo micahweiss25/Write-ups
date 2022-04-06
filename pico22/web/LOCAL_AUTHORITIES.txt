@@ -1,0 +1,5 @@
+LOCAL_AUTHORITIES
+
+very simple write up.
+
+tried to sign in with user: admin, pass: admin and it sent me to a page saying it was wrong. When I inspected the page though, debugger had a "secure.js" file that had the pass word in it. 

@@ -1,0 +1,2 @@
+Open the file up in a online decompiler such as https://www.jdoodle.com/online-java-compiler/
+you can then clearly see the flag.

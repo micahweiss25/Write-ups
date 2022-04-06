@@ -1,0 +1,4 @@
+SUPER_COOKIE_WRITEUP.txt
+
+I inspected the website, saw isAdmin was 1, meaning true, hit continue as guest, which changed isAdmin to 1, I reset it to 1 and refreshed the page. It gave me the flag
+picoCTF{gr4d3_A_c00k13_65fd1e1a}

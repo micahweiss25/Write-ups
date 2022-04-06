@@ -1,0 +1,3 @@
+BASIC-FILE-EXPORT_WRITEUP.txt
+
+if you open it up in ghidra, the echo phrase function takes an input and prints flag if the input is zero. It reads in 8 bytes so you give it 4 zeros. then you get the flag

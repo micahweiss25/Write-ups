@@ -1,0 +1,21 @@
+x-what
+
+run, give a's, seg faults. This means you can overwrite the saved RIP because the program tried to return to a position in memory it did not have access to.
+
+main runs vuln, vuln runs gets(buf). 
+
+goal: overflow buf, point saved rip to flag.
+
+first, find the buffsize of vuln
+then, find the address of flag()
+
+break at vuln
+feed pwn_cyclic
+find offset
+
+offset = 64
+offset + 8 + payload * spot on
+
+I tried, flag() address = 00401236 bc that is where flag() started in ghidra but then swithed to 0040123b when the challenge said to go to mov, not the start of the function. 
+
+got EOF errors for 30 min and then changed recvline to recv(34) and got the flag picoCTF{b1663r_15_b3773r_be31178c}

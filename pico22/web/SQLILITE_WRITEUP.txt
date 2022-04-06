@@ -1,0 +1,5 @@
+based on the name of the challenge, I figured it was a sql injection challenge. It was.
+I googled an injection, " or ""=", and only had to change from " to ' to make it work.
+putting the injection for user and pswd gave me access to the website, and from there I 
+inpected to find the flag. 
+picoCTF{L00k5_l1k3_y0u_solv3d_it_d3c660ac}
