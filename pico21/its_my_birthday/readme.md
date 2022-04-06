@@ -1,5 +1,5 @@
 # It's My Birthday
-- Category: Web
+- Category: Web (should be crypto)
 - Points: 100
 - Flag: picoCTF{c0ngr4ts_u_r_1nv1t3d_aebcbf39}
 ## Challenge
