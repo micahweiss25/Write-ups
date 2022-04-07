@@ -19,3 +19,9 @@ After looking extensively, I couldn't figure out how to change referer in the br
 In burp suite, I used proxy, intercept, and changed the request headers there. ![](who_are_you.png)
 Set DNT to 1, Date to 2018, referer to the same website and then it says you have to be from sweden. I started googling an then I had an epiphany... 
 documentation is very useful when you know where to look in it. I pulled the RFC back up and went to the header field definitions section. I found content-location, read what it was and realized it was the next header I needed to change. 
+
+Referer: http://mercury.picoctf.net:34588/
+Date: Wed, 21 Oct 2015 07:28:00 GMT
+User-Agent: PicoBrowser
+DNT: 1
+
