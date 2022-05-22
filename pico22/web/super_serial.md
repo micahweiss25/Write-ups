@@ -33,3 +33,4 @@ go into cookie editor and set name to login and data to the encoded php log_file
 *I barely understand this, and the write-up servers as a forcing function to solidify some loose understandings of how this works*
 https://www.youtube.com/watch?v=Eu3nFVAwAK0
 https://ctftime.org/writeup/27016
+https://medium.com/swlh/exploiting-php-deserialization-56d71f03282a
